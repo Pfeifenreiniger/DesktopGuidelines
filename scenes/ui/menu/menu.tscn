@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://crhiiwwlu6c6p"]
+
+[ext_resource type="Script" uid="uid://dx357ulejdpen" path="res://scenes/ui/menu/menu.gd" id="1_1m4yv"]
+[ext_resource type="Texture2D" uid="uid://tq1y71kn0cyc" path="res://assets/icons/colors/red.png" id="1_h1w4e"]
+[ext_resource type="Texture2D" uid="uid://de44ftwegensl" path="res://assets/icons/colors/blue.png" id="2_q18yf"]
+[ext_resource type="Texture2D" uid="uid://cd26dir63q602" path="res://assets/icons/colors/green.png" id="3_eftq8"]
+[ext_resource type="Texture2D" uid="uid://b3we2g0b2u2ab" path="res://assets/icons/colors/white.png" id="5_lw6n4"]
+[ext_resource type="Texture2D" uid="uid://b0gcwhji3m0t1" path="res://assets/icons/colors/orange.png" id="7_4ihms"]
+[ext_resource type="Texture2D" uid="uid://cqlw4c6i35v7u" path="res://assets/icons/colors/brown.png" id="8_q4qhi"]
+[ext_resource type="Texture2D" uid="uid://beycygihdaqn7" path="res://assets/icons/colors/yellow.png" id="9_a3wms"]
+[ext_resource type="Texture2D" uid="uid://byvuwi5xyhss" path="res://assets/icons/colors/violet.png" id="10_c6wgu"]
+[ext_resource type="Texture2D" uid="uid://clradecdivvod" path="res://assets/icons/colors/pink.png" id="11_tn1yv"]
+
+[sub_resource type="Theme" id="Theme_q18yf"]
+
+[node name="Menu" type="BoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_q18yf")
+script = ExtResource("1_1m4yv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ScreenOptionButton" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="LockCheckButton" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Locked"
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="AxisOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Horizontal"
+popup/item_0/id = 0
+popup/item_1/text = "Vertical"
+popup/item_1/id = 1
+
+[node name="ColorOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+selected = 0
+fit_to_longest_item = false
+item_count = 9
+popup/item_0/icon = ExtResource("1_h1w4e")
+popup/item_0/id = 0
+popup/item_1/icon = ExtResource("2_q18yf")
+popup/item_1/id = 1
+popup/item_2/icon = ExtResource("3_eftq8")
+popup/item_2/id = 2
+popup/item_3/icon = ExtResource("5_lw6n4")
+popup/item_3/id = 3
+popup/item_4/icon = ExtResource("7_4ihms")
+popup/item_4/id = 4
+popup/item_5/icon = ExtResource("8_q4qhi")
+popup/item_5/id = 5
+popup/item_6/icon = ExtResource("9_a3wms")
+popup/item_6/id = 6
+popup/item_7/icon = ExtResource("10_c6wgu")
+popup/item_7/id = 7
+popup/item_8/icon = ExtResource("11_tn1yv")
+popup/item_8/id = 8
+
+[node name="AddGuidelineButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt7t63y7t7egt"]
+
+[ext_resource type="Script" uid="uid://cxc8pom1jrryq" path="res://scenes/enums/enums.gd" id="1_dlo3i"]
+
+[node name="Enums" type="Node"]
+script = ExtResource("1_dlo3i")

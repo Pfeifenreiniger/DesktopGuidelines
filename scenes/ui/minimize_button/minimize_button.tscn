@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://drvbdnaeybv8v"]
+
+[ext_resource type="Script" uid="uid://d2vo6rirmd57p" path="res://scenes/ui/minimize_button/minimize_button.gd" id="1_lax3t"]
+
+[node name="MinimizeButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "-"
+script = ExtResource("1_lax3t")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://delfv435iyhil"]
+
+[ext_resource type="Script" uid="uid://bp7fjwpkfcqny" path="res://scenes/states/monitor_state.gd" id="1_wpqfn"]
+
+[node name="MonitorState" type="Node2D"]
+script = ExtResource("1_wpqfn")
