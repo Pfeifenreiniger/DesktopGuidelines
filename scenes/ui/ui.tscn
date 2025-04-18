@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dch6xf6jgk3m"]
+[gd_scene load_steps=8 format=3 uid="uid://dch6xf6jgk3m"]
 
 [ext_resource type="Script" uid="uid://b35b0i1s8564m" path="res://scenes/ui/ui.gd" id="1_f5cxw"]
 [ext_resource type="PackedScene" uid="uid://v1t007lne32v" path="res://scenes/ui/quit_button/quit_button.tscn" id="1_u7n8c"]
+[ext_resource type="FontFile" uid="uid://pwpf8mb16iar" path="res://assets/fonts/Nunito-Bold.ttf" id="3_0dwhk"]
+[ext_resource type="Texture2D" uid="uid://0sqce5lj12or" path="res://assets/icons/menu/burger.png" id="3_g5kmx"]
 [ext_resource type="PackedScene" uid="uid://crhiiwwlu6c6p" path="res://scenes/ui/menu/menu.tscn" id="4_g5kmx"]
+
+[sub_resource type="Theme" id="Theme_pfayw"]
+default_font = ExtResource("3_0dwhk")
+
+[sub_resource type="Theme" id="Theme_0dwhk"]
+default_font = ExtResource("3_0dwhk")
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -30,13 +38,16 @@ size_flags_horizontal = 8
 
 [node name="QuitButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_u7n8c")]
 layout_mode = 2
+theme = SubResource("Theme_pfayw")
 metadata/_edit_lock_ = true
 
 [node name="MenuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-text = "Menu"
+tooltip_text = "open menu"
+theme = SubResource("Theme_0dwhk")
+icon = ExtResource("3_g5kmx")
 
 [node name="Menu" parent="VBoxContainer" instance=ExtResource("4_g5kmx")]
 visible = false

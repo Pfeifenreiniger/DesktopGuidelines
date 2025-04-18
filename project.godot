@@ -11,15 +11,20 @@ config_version=5
 [application]
 
 config/name="DesktopGuidelines"
+config/description="A program to place guidelines on your desktop that help you to align stuff"
+config/version="1.0"
 run/main_scene="uid://bj7d371ie87vt"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://c74p8meqi63nv"
+config/windows_native_icon="res://assets/icons/program/program.ico"
 
 [autoload]
 
 MousePassThrough="*res://scripts/MousePassThrough.cs"
 MonitorState="*res://scenes/states/monitor_state.tscn"
 Enums="*res://scenes/enums/enums.tscn"
+GuidelinesState="*res://scenes/states/guidelines_state.tscn"
+Utils="*res://scenes/utils/utils.tscn"
 
 [display]
 

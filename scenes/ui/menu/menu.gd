@@ -21,6 +21,8 @@ signal remove_all_guidelines
 var axis:String = Enums.AXIS_HORIZONTAL
 var color:Color = Enums.COLOR_RED
 
+var locked_icon = Image.load_from_file('res://assets/icons/locked/locked.png')
+
 
 #-------METHODS: CALLED AT SCENE ENTRY-------
 
@@ -34,6 +36,7 @@ func _ready() -> void:
 	axis_option_button.item_selected.connect(_on_axis_option_button_item_selected)
 	color_option_button.item_selected.connect(_on_color_option_button_item_selected)
 	add_guideline_button.pressed.connect(_on_add_guideline_button_pressed)
+	GuidelinesState.max_amount_reached.connect(_on_guidelines_state_max_amount_reached)
 
 
 func _init_screens_options() -> void:
@@ -47,12 +50,14 @@ func _init_screens_options() -> void:
 func _on_lock_check_button_toggled(status:bool) -> void:
 	guidelines_lock_button_toggled.emit(status)
 	add_guideline_button.disabled = status # wenn gelockt, dann sollen auch keine neuen Guidelines hinzugefuegt werden koennen
+	
+	lock_check_button.tooltip_text = "un-lock guidelines" if status else "lock guidelines"
 
 
 func _on_screen_option_button_item_selected(i:int) -> void:
 	var monitor_index:int = i
 	if monitor_index < 0 or monitor_index >= DisplayServer.get_screen_count():
-		push_warning("Ungültiger Monitorindex.")
+		push_warning("Invalid screen index")
 		return
 	
 	remove_all_guidelines.emit()
@@ -109,4 +114,16 @@ func _on_color_option_button_item_selected(i:int) -> void:
 
 
 func _on_add_guideline_button_pressed() -> void:
+	# die maximale Anzahl an Guidelines sollte nicht ueberschritten werden
+	if GuidelinesState.amount_of_guidelines >= GuidelinesState.MAX_GUIDELINES:
+		return
+	
+	GuidelinesState.add_guideline()
+	
 	guideline_added.emit(axis, color)
+
+
+func _on_guidelines_state_max_amount_reached(status:bool) -> void:
+	add_guideline_button.disabled = status
+	
+	add_guideline_button.tooltip_text = "maximum of guidelines reached" if status else "add guideline"

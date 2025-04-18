@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://crhiiwwlu6c6p"]
+[gd_scene load_steps=20 format=3 uid="uid://crhiiwwlu6c6p"]
 
 [ext_resource type="Script" uid="uid://dx357ulejdpen" path="res://scenes/ui/menu/menu.gd" id="1_1m4yv"]
 [ext_resource type="Texture2D" uid="uid://tq1y71kn0cyc" path="res://assets/icons/colors/red.png" id="1_h1w4e"]
+[ext_resource type="Texture2D" uid="uid://dfk62pr0a1sas" path="res://assets/icons/locked/locked.png" id="2_eftq8"]
+[ext_resource type="FontFile" uid="uid://pwpf8mb16iar" path="res://assets/fonts/Nunito-Bold.ttf" id="2_lw6n4"]
 [ext_resource type="Texture2D" uid="uid://de44ftwegensl" path="res://assets/icons/colors/blue.png" id="2_q18yf"]
 [ext_resource type="Texture2D" uid="uid://cd26dir63q602" path="res://assets/icons/colors/green.png" id="3_eftq8"]
 [ext_resource type="Texture2D" uid="uid://b3we2g0b2u2ab" path="res://assets/icons/colors/white.png" id="5_lw6n4"]
@@ -10,13 +12,32 @@
 [ext_resource type="Texture2D" uid="uid://beycygihdaqn7" path="res://assets/icons/colors/yellow.png" id="9_a3wms"]
 [ext_resource type="Texture2D" uid="uid://byvuwi5xyhss" path="res://assets/icons/colors/violet.png" id="10_c6wgu"]
 [ext_resource type="Texture2D" uid="uid://clradecdivvod" path="res://assets/icons/colors/pink.png" id="11_tn1yv"]
+[ext_resource type="Texture2D" uid="uid://byk0h1syhkglp" path="res://assets/icons/add/add.png" id="12_1m4yv"]
 
-[sub_resource type="Theme" id="Theme_q18yf"]
+[sub_resource type="Theme" id="Theme_c6wgu"]
+
+[sub_resource type="Theme" id="Theme_lw6n4"]
+default_font = ExtResource("2_lw6n4")
+TooltipLabel/fonts/font = ExtResource("2_lw6n4")
+
+[sub_resource type="Theme" id="Theme_a3wms"]
+default_font = ExtResource("2_lw6n4")
+
+[sub_resource type="Theme" id="Theme_4ihms"]
+default_font = ExtResource("2_lw6n4")
+TooltipLabel/fonts/font = ExtResource("2_lw6n4")
+
+[sub_resource type="Theme" id="Theme_72mr2"]
+default_font = ExtResource("2_lw6n4")
+TooltipLabel/fonts/font = ExtResource("2_lw6n4")
+
+[sub_resource type="Theme" id="Theme_q4qhi"]
+default_font = ExtResource("2_lw6n4")
 
 [node name="Menu" type="BoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
-theme = SubResource("Theme_q18yf")
+theme = SubResource("Theme_c6wgu")
 script = ExtResource("1_1m4yv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -24,12 +45,19 @@ layout_mode = 2
 
 [node name="ScreenOptionButton" type="OptionButton" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "screen selection"
+theme = SubResource("Theme_lw6n4")
+theme_override_fonts/font = ExtResource("2_lw6n4")
 alignment = 2
 
 [node name="LockCheckButton" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Locked"
+tooltip_text = "lock guidelines"
+theme = SubResource("Theme_a3wms")
+theme_override_fonts/font = ExtResource("2_lw6n4")
+icon = ExtResource("2_eftq8")
 alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -37,15 +65,21 @@ layout_mode = 2
 
 [node name="AxisOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+tooltip_text = "axis orientation of guideline"
+theme = SubResource("Theme_4ihms")
+theme_override_fonts/font = ExtResource("2_lw6n4")
 selected = 0
 item_count = 2
-popup/item_0/text = "Horizontal"
+popup/item_0/text = "horizontally"
 popup/item_0/id = 0
-popup/item_1/text = "Vertical"
+popup/item_1/text = "vertically"
 popup/item_1/id = 1
 
 [node name="ColorOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+tooltip_text = "color of guideline"
+theme = SubResource("Theme_72mr2")
+theme_override_fonts/font = ExtResource("2_lw6n4")
 selected = 0
 fit_to_longest_item = false
 item_count = 9
@@ -70,4 +104,7 @@ popup/item_8/id = 8
 
 [node name="AddGuidelineButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Add"
+tooltip_text = "add guideline"
+theme = SubResource("Theme_q4qhi")
+theme_override_fonts/font = ExtResource("2_lw6n4")
+icon = ExtResource("12_1m4yv")

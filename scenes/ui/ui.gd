@@ -13,6 +13,11 @@ extends Control
 const y_guideline_scene:PackedScene = preload("res://scenes/ui/guideline/y_guideline.tscn")
 const x_guideline_scene:PackedScene = preload("res://scenes/ui/guideline/x_guideline.tscn")
 
+const menu_icons:Dictionary[String, CompressedTexture2D] = {
+	'burger' : preload("res://assets/icons/menu/burger.png"),
+	'x' : preload("res://assets/icons/menu/x.png")
+}
+
 
 #-------METHODS: CALLED AT SCENE ENTRY-------
 
@@ -29,6 +34,13 @@ func _ready() -> void:
 
 func _on_menu_button_pressed() -> void:
 	menu.visible = !menu.visible
+	
+	if menu.visible:
+		menu_button.icon = menu_icons['x']
+		menu_button.tooltip_text = "close menu"
+	else:
+		menu_button.icon = menu_icons['burger']
+		menu_button.tooltip_text = "open menu"
 
 
 func _on_menu_guideline_added(axis, color) -> void:
@@ -56,7 +68,9 @@ func _on_menu_guidelines_lock_button_toggled(status:bool) -> void:
 func _on_menu_remove_all_guidelines() -> void:
 	for guideline in guidelines.get_children():
 		guideline.queue_free()
+	GuidelinesState.reset_guidelines()
 
 
 func _on_remove_guideline(guideline_reference:ColorRect) -> void:
 	guideline_reference.queue_free()
+	GuidelinesState.remove_guideline()

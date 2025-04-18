@@ -40,7 +40,7 @@ func _ready() -> void:
 	anchor_right = 0
 	
 	offset_left = x_position # X-Achsen-Position
-	offset_right = x_position + 1
+	offset_right = x_position + 2
 	
 	# connect signals
 	grab_area.gui_input.connect(_on_grab_area_gui_input)
@@ -80,5 +80,4 @@ func _on_grab_area_gui_input(event:InputEvent) -> void:
 
 
 func _on_remove_button_pressed() -> void:
-	print("Entferne mich :)")
 	remove_guideline.emit(self)

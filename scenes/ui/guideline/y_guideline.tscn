@@ -1,12 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1mnscpqy4ndu"]
+[gd_scene load_steps=6 format=3 uid="uid://d1mnscpqy4ndu"]
 
 [ext_resource type="Script" uid="uid://c6uwyvyv6pksv" path="res://scenes/ui/guideline/y_guideline.gd" id="1_vehaw"]
+[ext_resource type="FontFile" uid="uid://pwpf8mb16iar" path="res://assets/fonts/Nunito-Bold.ttf" id="2_at0lb"]
+[ext_resource type="Texture2D" uid="uid://d4dlnnpowwib" path="res://assets/icons/remove/remove.png" id="2_wra6s"]
+
+[sub_resource type="Theme" id="Theme_v1xi5"]
+default_font = ExtResource("2_at0lb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wra6s"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="YGuideline" type="ColorRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -647.0
+offset_bottom = -646.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_stretch_ratio = 0.0
@@ -32,4 +40,8 @@ offset_top = -15.5
 offset_right = 17.0
 offset_bottom = 15.5
 grow_vertical = 2
-text = "x"
+tooltip_text = "remove guideline"
+theme = SubResource("Theme_v1xi5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wra6s")
+icon = ExtResource("2_wra6s")
+icon_alignment = 1
