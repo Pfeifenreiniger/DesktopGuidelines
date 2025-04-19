@@ -9,6 +9,7 @@ signal remove_guideline(self_reference)
 
 @onready var grab_area: ColorRect = $GrabArea as ColorRect
 @onready var remove_button: Button = $RemoveButton as Button
+@onready var mouse_position_label: Label = $MousePositionLabel as Label
 
 
 #-------PROPERTIES-------
@@ -44,13 +45,43 @@ func _ready() -> void:
 	
 	# connect signals
 	grab_area.gui_input.connect(_on_grab_area_gui_input)
+	grab_area.mouse_exited.connect(_on_grab_area_mouse_exited)
 	remove_button.pressed.connect(_on_remove_button_pressed)
+
+
+#-------METHODS: PER FRAME CALLED-------
+
+func _process(delta: float) -> void:
+	_handle_mouse_position_label_position()
+
+
+#-------METHODS-------
+
+func _handle_mouse_position_label_position() -> void:
+	
+	var offset_x:float = 4.
+	
+	if global_position.x + mouse_position_label.size.x >= MonitorState.MONITOR_SIZE.x:
+		
+		if mouse_position_label.position.x != -(mouse_position_label.size.x) - offset_x:
+			mouse_position_label.position.x = -(mouse_position_label.size.x) - offset_x
+	
+	else:
+		if mouse_position_label.position.x != offset_x:
+			mouse_position_label.position.x = offset_x
 
 
 #-------METHODS: CONNECTED SIGNALS-------
 
 func _on_grab_area_gui_input(event:InputEvent) -> void:
 	
+	# zeige Mauszeiger Position im Label an
+	if event is InputEventMouseMotion:
+		var pos:Vector2 = event.global_position
+		mouse_position_label.text = "X: %s\nY: %s" % [int(pos.x), int(pos.y)]
+	
+	# ab hier potentielles Bewegen der Guideline
+	# -> wenn gelockt, dann raus
 	if locked:
 		return
 	
@@ -77,6 +108,11 @@ func _on_grab_area_gui_input(event:InputEvent) -> void:
 	
 	elif event is InputEventMouseMotion and is_dragging:
 		position.x = clamp(position.x + event.relative.x, 0, get_viewport_rect().size.x)
+
+
+func _on_grab_area_mouse_exited() -> void:
+	# entferne Mauszeiger-Position Label
+	mouse_position_label.text = ''
 
 
 func _on_remove_button_pressed() -> void:

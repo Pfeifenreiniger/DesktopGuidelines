@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://kjj4jkosocbc"]
+[gd_scene load_steps=7 format=3 uid="uid://kjj4jkosocbc"]
 
 [ext_resource type="Script" uid="uid://cg51yld82ynde" path="res://scenes/ui/guideline/x_guideline.gd" id="1_jla7j"]
 [ext_resource type="FontFile" uid="uid://pwpf8mb16iar" path="res://assets/fonts/Nunito-Bold.ttf" id="2_vjsg4"]
@@ -9,6 +9,10 @@ default_font = ExtResource("2_vjsg4")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkfsv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_vjsg4"]
+default_font = ExtResource("2_vjsg4")
+default_font_size = 14
 
 [node name="XGuideline" type="ColorRect"]
 anchors_preset = 15
@@ -47,3 +51,11 @@ theme = SubResource("Theme_k8ee4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_xkfsv")
 icon = ExtResource("2_xkfsv")
 icon_alignment = 1
+
+[node name="MousePositionLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 60.0
+offset_bottom = 51.0
+theme = SubResource("Theme_vjsg4")
