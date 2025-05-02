@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://crhiiwwlu6c6p"]
+[gd_scene load_steps=22 format=3 uid="uid://crhiiwwlu6c6p"]
 
 [ext_resource type="Script" uid="uid://dx357ulejdpen" path="res://scenes/ui/menu/menu.gd" id="1_1m4yv"]
 [ext_resource type="Texture2D" uid="uid://tq1y71kn0cyc" path="res://assets/icons/colors/red.png" id="1_h1w4e"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://pwpf8mb16iar" path="res://assets/fonts/Nunito-Bold.ttf" id="2_lw6n4"]
 [ext_resource type="Texture2D" uid="uid://de44ftwegensl" path="res://assets/icons/colors/blue.png" id="2_q18yf"]
 [ext_resource type="Texture2D" uid="uid://cd26dir63q602" path="res://assets/icons/colors/green.png" id="3_eftq8"]
+[ext_resource type="Texture2D" uid="uid://l08t3qixptx3" path="res://assets/icons/hide/hide_1.png" id="4_72mr2"]
 [ext_resource type="Texture2D" uid="uid://b3we2g0b2u2ab" path="res://assets/icons/colors/white.png" id="5_lw6n4"]
 [ext_resource type="Texture2D" uid="uid://b0gcwhji3m0t1" path="res://assets/icons/colors/orange.png" id="7_4ihms"]
 [ext_resource type="Texture2D" uid="uid://cqlw4c6i35v7u" path="res://assets/icons/colors/brown.png" id="8_q4qhi"]
@@ -21,6 +22,9 @@ default_font = ExtResource("2_lw6n4")
 TooltipLabel/fonts/font = ExtResource("2_lw6n4")
 
 [sub_resource type="Theme" id="Theme_a3wms"]
+default_font = ExtResource("2_lw6n4")
+
+[sub_resource type="Theme" id="Theme_tn1yv"]
 default_font = ExtResource("2_lw6n4")
 
 [sub_resource type="Theme" id="Theme_4ihms"]
@@ -51,7 +55,11 @@ theme = SubResource("Theme_lw6n4")
 theme_override_fonts/font = ExtResource("2_lw6n4")
 alignment = 2
 
-[node name="LockCheckButton" type="CheckButton" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LockCheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "lock guidelines"
@@ -59,6 +67,17 @@ theme = SubResource("Theme_a3wms")
 theme_override_fonts/font = ExtResource("2_lw6n4")
 icon = ExtResource("2_eftq8")
 alignment = 2
+
+[node name="PixelPositionCheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_tn1yv")
+button_pressed = true
+text = "px"
+
+[node name="HideGuidelinesCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+tooltip_text = "hide guidelines"
+icon = ExtResource("4_72mr2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

@@ -72,5 +72,11 @@ func _on_menu_remove_all_guidelines() -> void:
 
 
 func _on_remove_guideline(guideline_reference:ColorRect) -> void:
+	
+	var was_locked:bool = guideline_reference.locked
+	
 	guideline_reference.queue_free()
 	GuidelinesState.remove_guideline()
+	
+	if was_locked:
+		menu.add_guideline_button.disabled = true

@@ -10,7 +10,9 @@ signal remove_all_guidelines
 #-------NODES-------
 
 @onready var screen_option_button: OptionButton = $VBoxContainer/ScreenOptionButton as OptionButton
-@onready var lock_check_button: CheckButton = $VBoxContainer/LockCheckButton as CheckButton
+@onready var lock_check_button: CheckButton = $VBoxContainer/HBoxContainer2/LockCheckButton as CheckButton
+@onready var pixel_position_check_button: CheckButton = $VBoxContainer/HBoxContainer2/PixelPositionCheckButton as CheckButton
+@onready var hide_guidelines_check_box: CheckBox = $VBoxContainer/HBoxContainer2/HideGuidelinesCheckBox as CheckBox
 @onready var axis_option_button: OptionButton = $VBoxContainer/HBoxContainer/AxisOptionButton as OptionButton
 @onready var color_option_button: OptionButton = $VBoxContainer/HBoxContainer/ColorOptionButton as OptionButton
 @onready var add_guideline_button: Button = $VBoxContainer/HBoxContainer/AddGuidelineButton as Button
@@ -20,8 +22,8 @@ signal remove_all_guidelines
 
 var axis:String = Enums.AXIS_HORIZONTAL
 var color:Color = Enums.COLOR_RED
-
-var locked_icon = Image.load_from_file('res://assets/icons/locked/locked.png')
+const hide_icon_1:CompressedTexture2D = preload("res://assets/icons/hide/hide_1.png")
+const hide_icon_2:CompressedTexture2D = preload("res://assets/icons/hide/hide_2.png")
 
 
 #-------METHODS: CALLED AT SCENE ENTRY-------
@@ -33,6 +35,8 @@ func _ready() -> void:
 	# connect signals
 	screen_option_button.item_selected.connect(_on_screen_option_button_item_selected)
 	lock_check_button.toggled.connect(_on_lock_check_button_toggled)
+	pixel_position_check_button.toggled.connect(_on_pixel_position_check_button_toggled)
+	hide_guidelines_check_box.toggled.connect(_on_hide_guidelines_check_box_toggled)
 	axis_option_button.item_selected.connect(_on_axis_option_button_item_selected)
 	color_option_button.item_selected.connect(_on_color_option_button_item_selected)
 	add_guideline_button.pressed.connect(_on_add_guideline_button_pressed)
@@ -49,9 +53,24 @@ func _init_screens_options() -> void:
 
 func _on_lock_check_button_toggled(status:bool) -> void:
 	guidelines_lock_button_toggled.emit(status)
-	add_guideline_button.disabled = status # wenn gelockt, dann sollen auch keine neuen Guidelines hinzugefuegt werden koennen
+	add_guideline_button.disabled = true if status else (false if not hide_guidelines_check_box.button_pressed else true)
 	
 	lock_check_button.tooltip_text = "un-lock guidelines" if status else "lock guidelines"
+
+
+func _on_pixel_position_check_button_toggled(status:bool) -> void:
+	GuidelinesState.show_mouse_pixel_position = status
+	
+	pixel_position_check_button.tooltip_text = "hide mouse-cursor position" if status else "show mouse-cursor position"
+
+
+func _on_hide_guidelines_check_box_toggled(status:bool) -> void:
+	hide_guidelines_check_box.icon = hide_icon_2 if status else hide_icon_1
+	hide_guidelines_check_box.tooltip_text = "show hidden guidelines" if status else "hide guidelines"
+	
+	add_guideline_button.disabled = true if status else (false if not lock_check_button.button_pressed else true)
+	
+	GuidelinesState.hide_guidelines = status
 
 
 func _on_screen_option_button_item_selected(i:int) -> void:

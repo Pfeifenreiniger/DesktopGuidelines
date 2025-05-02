@@ -47,6 +47,7 @@ func _ready() -> void:
 	grab_area.gui_input.connect(_on_grab_area_gui_input)
 	grab_area.mouse_exited.connect(_on_grab_area_mouse_exited)
 	remove_button.pressed.connect(_on_remove_button_pressed)
+	GuidelinesState.do_hide_guidelines.connect(_on_guidelines_state_do_hide_guidelines)
 
 
 #-------METHODS: PER FRAME CALLED-------
@@ -76,7 +77,7 @@ func _handle_mouse_position_label_position() -> void:
 func _on_grab_area_gui_input(event:InputEvent) -> void:
 	
 	# zeige Mauszeiger Position im Label an
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && GuidelinesState.show_mouse_pixel_position:
 		var pos:Vector2 = event.global_position
 		mouse_position_label.text = "X: %s\nY: %s" % [int(pos.x), int(pos.y)]
 	
@@ -117,3 +118,7 @@ func _on_grab_area_mouse_exited() -> void:
 
 func _on_remove_button_pressed() -> void:
 	remove_guideline.emit(self)
+
+
+func _on_guidelines_state_do_hide_guidelines(status:bool) -> void:
+	visible = !status

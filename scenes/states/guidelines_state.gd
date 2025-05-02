@@ -3,6 +3,7 @@ extends Node
 #-------CUSTOM SIGNALS-------
 
 signal max_amount_reached(status:bool)
+signal do_hide_guidelines(status:bool)
 
 
 #-------PROPERTIES-------
@@ -18,6 +19,16 @@ var amount_of_guidelines:int = 0:
 			max_amount_reached.emit(true)
 		else:
 			max_amount_reached.emit(false)
+
+var hide_guidelines:bool = false:
+	get:
+		return hide_guidelines
+	set(value):
+		hide_guidelines = value
+		do_hide_guidelines.emit(value)
+
+var show_mouse_pixel_position:bool = true
+
 
 
 #-------METHODS-------
