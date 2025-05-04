@@ -1,0 +1,138 @@
+[gd_scene load_steps=21 format=3 uid="uid://cpg2vff0j5ntv"]
+
+[ext_resource type="Script" uid="uid://56mfd0vofw12" path="res://scenes/ui/guideline/rect_guideline.gd" id="1_362rr"]
+[ext_resource type="FontFile" uid="uid://pwpf8mb16iar" path="res://assets/fonts/Nunito-Bold.ttf" id="2_6mgu4"]
+[ext_resource type="Texture2D" uid="uid://lrn7f7if5m0s" path="res://assets/icons/resize/resize.png" id="2_g3bkc"]
+[ext_resource type="Texture2D" uid="uid://bfy2npcc0ji8w" path="res://assets/icons/move/move.png" id="3_vlv0x"]
+[ext_resource type="Texture2D" uid="uid://d4dlnnpowwib" path="res://assets/icons/remove/remove.png" id="5_oeigi"]
+[ext_resource type="Script" uid="uid://dnqvbjci47pqb" path="res://scenes/ui/guideline/rect_guideline_size_label.gd" id="6_5x14m"]
+
+[sub_resource type="Theme" id="Theme_oeigi"]
+default_font = ExtResource("2_6mgu4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeigi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5x14m"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbjaq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3bkc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mgu4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlv0x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_6mgu4"]
+default_font = ExtResource("2_6mgu4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byqxo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbt0v"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkxrp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emyn4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqoml"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oeigi"]
+resource_local_to_scene = true
+font = ExtResource("2_6mgu4")
+font_size = 14
+
+[node name="RectGuideline" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_362rr")
+min_size = null
+
+[node name="ResizeButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 0
+tooltip_text = "resize rectangle"
+theme = SubResource("Theme_oeigi")
+theme_override_styles/focus = SubResource("StyleBoxFlat_oeigi")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5x14m")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_bbjaq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g3bkc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6mgu4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vlv0x")
+icon = ExtResource("2_g3bkc")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="MoveButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 14.0
+offset_bottom = 14.0
+tooltip_text = "move rectangle"
+theme = SubResource("Theme_6mgu4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_oeigi")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5x14m")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_bbjaq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g3bkc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6mgu4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vlv0x")
+icon = ExtResource("3_vlv0x")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="RemoveButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_bottom = 18.0
+grow_horizontal = 0
+tooltip_text = "remove rectangle"
+theme_override_styles/focus = SubResource("StyleBoxFlat_byqxo")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_nbt0v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qkxrp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_emyn4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_oqoml")
+icon = ExtResource("5_oeigi")
+icon_alignment = 1
+
+[node name="SizeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = 6.0
+offset_right = 42.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Width: 20px
+Height: 60px"
+label_settings = SubResource("LabelSettings_oeigi")
+script = ExtResource("6_5x14m")

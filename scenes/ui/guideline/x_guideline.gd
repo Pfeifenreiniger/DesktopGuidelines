@@ -25,7 +25,7 @@ var locked:bool = false:
 		if value:
 			grab_area.mouse_default_cursor_shape = Control.CURSOR_ARROW
 		else:
-			grab_area.mouse_default_cursor_shape = Control.CURSOR_DRAG
+			grab_area.mouse_default_cursor_shape = Control.CURSOR_HSIZE
 
 
 #-------METHODS: CALLED AT SCENE ENTRY-------
@@ -35,7 +35,7 @@ func _ready() -> void:
 	grab_area.modulate = Color(1, 1, 1, 0.01) # nahezu transparent -> empfaengt so noch Mausinputs
 	
 	# mouse cursor anpassen
-	grab_area.mouse_default_cursor_shape = Control.CURSOR_DRAG
+	grab_area.mouse_default_cursor_shape = Control.CURSOR_HSIZE
 	
 	anchor_left = 0
 	anchor_right = 0
@@ -77,7 +77,7 @@ func _handle_mouse_position_label_position() -> void:
 func _on_grab_area_gui_input(event:InputEvent) -> void:
 	
 	# zeige Mauszeiger Position im Label an
-	if event is InputEventMouseMotion && GuidelinesState.show_mouse_pixel_position:
+	if event is InputEventMouseMotion && GuidelinesState.show_pixel_information:
 		var pos:Vector2 = event.global_position
 		mouse_position_label.text = "X: %s\nY: %s" % [int(pos.x), int(pos.y)]
 	

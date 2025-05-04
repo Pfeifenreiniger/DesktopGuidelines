@@ -68,8 +68,9 @@ theme_override_fonts/font = ExtResource("2_lw6n4")
 icon = ExtResource("2_eftq8")
 alignment = 2
 
-[node name="PixelPositionCheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer2"]
+[node name="PixelCheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+tooltip_text = "hide pixel-information"
 theme = SubResource("Theme_tn1yv")
 button_pressed = true
 text = "px"
@@ -88,11 +89,13 @@ tooltip_text = "axis orientation of guideline"
 theme = SubResource("Theme_4ihms")
 theme_override_fonts/font = ExtResource("2_lw6n4")
 selected = 0
-item_count = 2
+item_count = 3
 popup/item_0/text = "horizontally"
 popup/item_0/id = 0
 popup/item_1/text = "vertically"
 popup/item_1/id = 1
+popup/item_2/text = "rectangular"
+popup/item_2/id = 2
 
 [node name="ColorOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2

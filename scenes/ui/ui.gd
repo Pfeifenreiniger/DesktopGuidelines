@@ -12,6 +12,7 @@ extends Control
 
 const y_guideline_scene:PackedScene = preload("res://scenes/ui/guideline/y_guideline.tscn")
 const x_guideline_scene:PackedScene = preload("res://scenes/ui/guideline/x_guideline.tscn")
+const rect_guideline_scene:PackedScene = preload("res://scenes/ui/guideline/rect_guideline.tscn")
 
 const menu_icons:Dictionary[String, CompressedTexture2D] = {
 	'burger' : preload("res://assets/icons/menu/burger.png"),
@@ -58,6 +59,16 @@ func _on_menu_guideline_added(axis, color) -> void:
 		y_guideline.y_position = 100
 		y_guideline.modulate = color
 		guidelines.add_child(y_guideline)
+	
+	elif axis == Enums.AXIS_RECT:
+		var rect_guideline:RectGuideline = rect_guideline_scene.instantiate()
+		rect_guideline.remove_guideline.connect(_on_remove_guideline)
+		rect_guideline.position = Vector2(
+			MonitorState.MONITOR_SIZE.x / 2, MonitorState.MONITOR_SIZE.y / 2
+		)
+		rect_guideline.color = color
+		guidelines.add_child(rect_guideline)
+		
 
 
 func _on_menu_guidelines_lock_button_toggled(status:bool) -> void:
@@ -71,7 +82,7 @@ func _on_menu_remove_all_guidelines() -> void:
 	GuidelinesState.reset_guidelines()
 
 
-func _on_remove_guideline(guideline_reference:ColorRect) -> void:
+func _on_remove_guideline(guideline_reference:Control) -> void:
 	
 	var was_locked:bool = guideline_reference.locked
 	

@@ -4,6 +4,7 @@ extends Node
 # guideline Ausrichtung
 const AXIS_HORIZONTAL:String = 'horizontal'
 const AXIS_VERTICAL:String = 'vertical'
+const AXIS_RECT:String = 'rectangular'
 
 # guideline Farben
 const COLOR_RED = Color('#ED1C24')

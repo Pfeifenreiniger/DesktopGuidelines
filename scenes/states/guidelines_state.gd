@@ -4,11 +4,12 @@ extends Node
 
 signal max_amount_reached(status:bool)
 signal do_hide_guidelines(status:bool)
+signal do_show_pixel_information(status:bool)
 
 
 #-------PROPERTIES-------
 
-const MAX_GUIDELINES:int = 20
+const MAX_GUIDELINES:int = 30
 
 var amount_of_guidelines:int = 0:
 	get:
@@ -27,7 +28,12 @@ var hide_guidelines:bool = false:
 		hide_guidelines = value
 		do_hide_guidelines.emit(value)
 
-var show_mouse_pixel_position:bool = true
+var show_pixel_information:bool = true:
+	get:
+		return show_pixel_information
+	set(value):
+		show_pixel_information = value
+		do_show_pixel_information.emit(value)
 
 
 

@@ -11,7 +11,7 @@ signal remove_all_guidelines
 
 @onready var screen_option_button: OptionButton = $VBoxContainer/ScreenOptionButton as OptionButton
 @onready var lock_check_button: CheckButton = $VBoxContainer/HBoxContainer2/LockCheckButton as CheckButton
-@onready var pixel_position_check_button: CheckButton = $VBoxContainer/HBoxContainer2/PixelPositionCheckButton as CheckButton
+@onready var pixel_check_button: CheckButton = $VBoxContainer/HBoxContainer2/PixelCheckButton as CheckButton
 @onready var hide_guidelines_check_box: CheckBox = $VBoxContainer/HBoxContainer2/HideGuidelinesCheckBox as CheckBox
 @onready var axis_option_button: OptionButton = $VBoxContainer/HBoxContainer/AxisOptionButton as OptionButton
 @onready var color_option_button: OptionButton = $VBoxContainer/HBoxContainer/ColorOptionButton as OptionButton
@@ -35,7 +35,7 @@ func _ready() -> void:
 	# connect signals
 	screen_option_button.item_selected.connect(_on_screen_option_button_item_selected)
 	lock_check_button.toggled.connect(_on_lock_check_button_toggled)
-	pixel_position_check_button.toggled.connect(_on_pixel_position_check_button_toggled)
+	pixel_check_button.toggled.connect(_on_pixel_check_button_toggled)
 	hide_guidelines_check_box.toggled.connect(_on_hide_guidelines_check_box_toggled)
 	axis_option_button.item_selected.connect(_on_axis_option_button_item_selected)
 	color_option_button.item_selected.connect(_on_color_option_button_item_selected)
@@ -58,10 +58,10 @@ func _on_lock_check_button_toggled(status:bool) -> void:
 	lock_check_button.tooltip_text = "un-lock guidelines" if status else "lock guidelines"
 
 
-func _on_pixel_position_check_button_toggled(status:bool) -> void:
-	GuidelinesState.show_mouse_pixel_position = status
+func _on_pixel_check_button_toggled(status:bool) -> void:
+	GuidelinesState.show_pixel_information = status
 	
-	pixel_position_check_button.tooltip_text = "hide mouse-cursor position" if status else "show mouse-cursor position"
+	pixel_check_button.tooltip_text = "hide pixel-information" if status else "show pixel-information"
 
 
 func _on_hide_guidelines_check_box_toggled(status:bool) -> void:
@@ -108,6 +108,8 @@ func _on_axis_option_button_item_selected(i:int) -> void:
 		axis = Enums.AXIS_HORIZONTAL
 	elif i == 1:
 		axis = Enums.AXIS_VERTICAL
+	elif i == 2:
+		axis = Enums.AXIS_RECT
 
 
 func _on_color_option_button_item_selected(i:int) -> void:
