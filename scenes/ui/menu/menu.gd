@@ -1,4 +1,4 @@
-extends BoxContainer
+extends PanelContainer
 
 #-------CUSTOM SIGNALS-------
 

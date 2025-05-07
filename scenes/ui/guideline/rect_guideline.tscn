@@ -11,40 +11,84 @@
 default_font = ExtResource("2_6mgu4")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeigi"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5x14m"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbjaq"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3bkc"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mgu4"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlv0x"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="Theme" id="Theme_6mgu4"]
 default_font = ExtResource("2_6mgu4")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byqxo"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbt0v"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkxrp"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emyn4"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqoml"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0.0627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_oeigi"]
 resource_local_to_scene = true
@@ -57,7 +101,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_362rr")
-min_size = null
 
 [node name="ResizeButton" type="Button" parent="."]
 layout_mode = 1
@@ -73,6 +116,7 @@ offset_bottom = 6.0
 grow_horizontal = 0
 grow_vertical = 0
 tooltip_text = "resize rectangle"
+mouse_default_cursor_shape = 6
 theme = SubResource("Theme_oeigi")
 theme_override_styles/focus = SubResource("StyleBoxFlat_oeigi")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_5x14m")
@@ -91,6 +135,7 @@ offset_top = 2.0
 offset_right = 14.0
 offset_bottom = 14.0
 tooltip_text = "move rectangle"
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_6mgu4")
 theme_override_styles/focus = SubResource("StyleBoxFlat_oeigi")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_5x14m")
@@ -107,8 +152,8 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -18.0
-offset_bottom = 18.0
+offset_left = -14.0
+offset_bottom = 14.0
 grow_horizontal = 0
 tooltip_text = "remove rectangle"
 theme_override_styles/focus = SubResource("StyleBoxFlat_byqxo")
@@ -132,7 +177,7 @@ offset_right = 42.0
 offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Width: 20px
-Height: 60px"
+text = "Width: 40px
+Height: 40px"
 label_settings = SubResource("LabelSettings_oeigi")
 script = ExtResource("6_5x14m")

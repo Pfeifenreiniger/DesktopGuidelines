@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://byk0h1syhkglp" path="res://assets/icons/add/add.png" id="12_1m4yv"]
 
 [sub_resource type="Theme" id="Theme_c6wgu"]
+default_font = ExtResource("2_lw6n4")
 
 [sub_resource type="Theme" id="Theme_lw6n4"]
 default_font = ExtResource("2_lw6n4")
@@ -38,9 +39,9 @@ TooltipLabel/fonts/font = ExtResource("2_lw6n4")
 [sub_resource type="Theme" id="Theme_q4qhi"]
 default_font = ExtResource("2_lw6n4")
 
-[node name="Menu" type="BoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Menu" type="PanelContainer"]
+offset_right = 204.0
+offset_bottom = 90.0
 theme = SubResource("Theme_c6wgu")
 script = ExtResource("1_1m4yv")
 

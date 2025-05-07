@@ -5,7 +5,7 @@ extends Control
 @onready var guidelines: Control = $Guidelines as Control
 
 @onready var menu_button: Button = $VBoxContainer/MenuButton as Button
-@onready var menu: BoxContainer = $VBoxContainer/Menu as BoxContainer
+@onready var menu: PanelContainer = $VBoxContainer/Menu as PanelContainer
 
 
 #-------PROPERTIES-------
