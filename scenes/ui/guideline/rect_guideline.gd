@@ -18,7 +18,6 @@ signal remove_guideline(self_reference)
 #-------PROPERTIES-------
 
 @export var color := Color.WHITE
-@export var min_size := Vector2(30, 30)
 
 var is_resizing := false
 var is_moving := false
@@ -48,6 +47,8 @@ var locked := false:
 #-------METHODS: CALLED AT SCENE-ENTRY-------
 
 func _ready() -> void:
+	size = GuidelinesState.size_rect_guidelines
+	
 	resize_button.modulate = color
 	resize_button.mouse_default_cursor_shape = Control.CURSOR_DRAG
 	
@@ -100,7 +101,7 @@ func _input(event):
 			
 			# Berechne die maximale Größe basierend auf der aktuellen Position
 			var max_size:Vector2 = Vector2(MonitorState.MONITOR_SIZE.x, MonitorState.MONITOR_SIZE.y) - global_position
-			var new_size:Vector2 = (get_global_mouse_position() - global_position).clamp(min_size, max_size)
+			var new_size:Vector2 = (get_global_mouse_position() - global_position).clamp(GuidelinesState.MIN_SIZE_RECT_GUIDELINES, max_size)
 			size = new_size
 			size_label.text = "Width: %spx\nHeight: %spx" % [str(roundi(size.x)), str(roundi(size.y))]
 			
@@ -109,7 +110,7 @@ func _input(event):
 		elif is_moving:
 			
 			var mouse_pos:Vector2 = get_global_mouse_position()
-			var new_pos = mouse_pos - drag_offset
+			var new_pos:Vector2 = mouse_pos - drag_offset
 			
 			# Position innerhalb der Screen Size begrenzen
 			new_pos.x = clamp(

@@ -5,11 +5,14 @@ extends Node
 signal max_amount_reached(status:bool)
 signal do_hide_guidelines(status:bool)
 signal do_show_pixel_information(status:bool)
+signal do_block_guideline_adds(status:bool)
 
 
 #-------PROPERTIES-------
 
 const MAX_GUIDELINES:int = 30
+
+const MIN_SIZE_RECT_GUIDELINES:Vector2 = Vector2(20, 20)
 
 var amount_of_guidelines:int = 0:
 	get:
@@ -20,6 +23,10 @@ var amount_of_guidelines:int = 0:
 			max_amount_reached.emit(true)
 		else:
 			max_amount_reached.emit(false)
+
+
+var size_rect_guidelines:Vector2 = MIN_SIZE_RECT_GUIDELINES
+
 
 var hide_guidelines:bool = false:
 	get:
@@ -35,6 +42,12 @@ var show_pixel_information:bool = true:
 		show_pixel_information = value
 		do_show_pixel_information.emit(value)
 
+var block_guideline_adds:bool = false:
+	get:
+		return block_guideline_adds
+	set(value):
+		block_guideline_adds = value
+		do_block_guideline_adds.emit(value)
 
 
 #-------METHODS-------
