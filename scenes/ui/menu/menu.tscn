@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://crhiiwwlu6c6p"]
+[gd_scene load_steps=26 format=3 uid="uid://crhiiwwlu6c6p"]
 
 [ext_resource type="Script" uid="uid://dx357ulejdpen" path="res://scenes/ui/menu/menu.gd" id="1_1m4yv"]
 [ext_resource type="Texture2D" uid="uid://tq1y71kn0cyc" path="res://assets/icons/colors/red.png" id="1_h1w4e"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://byvuwi5xyhss" path="res://assets/icons/colors/violet.png" id="10_c6wgu"]
 [ext_resource type="Texture2D" uid="uid://clradecdivvod" path="res://assets/icons/colors/pink.png" id="11_tn1yv"]
 [ext_resource type="Texture2D" uid="uid://byk0h1syhkglp" path="res://assets/icons/add/add.png" id="12_1m4yv"]
+[ext_resource type="Texture2D" uid="uid://gbuhadro7t5j" path="res://assets/icons/clear/clear.png" id="15_4ihms"]
 
 [sub_resource type="Theme" id="Theme_c6wgu"]
 default_font = ExtResource("2_lw6n4")
@@ -37,6 +38,9 @@ default_font = ExtResource("2_lw6n4")
 TooltipLabel/fonts/font = ExtResource("2_lw6n4")
 
 [sub_resource type="Theme" id="Theme_q4qhi"]
+default_font = ExtResource("2_lw6n4")
+
+[sub_resource type="Theme" id="Theme_ebg20"]
 default_font = ExtResource("2_lw6n4")
 
 [sub_resource type="LabelSettings" id="LabelSettings_72mr2"]
@@ -141,6 +145,12 @@ tooltip_text = "add guideline"
 theme = SubResource("Theme_q4qhi")
 theme_override_fonts/font = ExtResource("2_lw6n4")
 icon = ExtResource("12_1m4yv")
+
+[node name="ClearGuidelinesButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "clear guidelines"
+theme = SubResource("Theme_ebg20")
+icon = ExtResource("15_4ihms")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 visible = false

@@ -16,6 +16,7 @@ signal remove_all_guidelines
 @onready var axis_option_button: OptionButton = $VBoxContainer/HBoxContainer/AxisOptionButton as OptionButton
 @onready var color_option_button: OptionButton = $VBoxContainer/HBoxContainer/ColorOptionButton as OptionButton
 @onready var add_guideline_button: Button = $VBoxContainer/HBoxContainer/AddGuidelineButton as Button
+@onready var clear_guidelines_button: Button = $VBoxContainer/HBoxContainer/ClearGuidelinesButton as Button
 
 @onready var container_rect_size: HBoxContainer = $VBoxContainer/HBoxContainer3 as HBoxContainer
 @onready var width_spin_box: SpinBox = $VBoxContainer/HBoxContainer3/MarginContainer/VBoxContainer/WidthSpinBox as SpinBox
@@ -34,12 +35,11 @@ const hide_icon_2:CompressedTexture2D = preload("res://assets/icons/hide/hide_2.
 
 func _ready() -> void:
 	
+	# init setup
 	_init_screens_options()
-	
-	#width_spin_box.min_value = GuidelinesState.MIN_SIZE_RECT_GUIDELINES.x
-	#height_spin_box.min_value = GuidelinesState.MIN_SIZE_RECT_GUIDELINES.y
 	width_spin_box.max_value = MonitorState.MONITOR_SIZE.x - 20
 	height_spin_box.max_value = MonitorState.MONITOR_SIZE.y - 20
+	clear_guidelines_button.disabled = true
 	
 	# connect signals
 	screen_option_button.item_selected.connect(_on_screen_option_button_item_selected)
@@ -49,9 +49,10 @@ func _ready() -> void:
 	axis_option_button.item_selected.connect(_on_axis_option_button_item_selected)
 	color_option_button.item_selected.connect(_on_color_option_button_item_selected)
 	add_guideline_button.pressed.connect(_on_add_guideline_button_pressed)
+	clear_guidelines_button.pressed.connect(_on_clear_guidelines_button_pressed)
 	width_spin_box.value_changed.connect(_on_spin_box_value_changed.bind('width'))
 	height_spin_box.value_changed.connect(_on_spin_box_value_changed.bind('height'))
-	
+	GuidelinesState.amount_of_guidelines_changed.connect(_on_guideline_state_amount_of_guidelines_changed)
 	GuidelinesState.max_amount_reached.connect(_on_guidelines_state_max_amount_reached)
 	GuidelinesState.do_block_guideline_adds.connect(_on_guideline_state_do_block_guideline_adds)
 	MonitorState.monitor_size_changed.connect(_on_monitor_state_monitor_size_changed)
@@ -202,6 +203,14 @@ func _on_add_guideline_button_pressed() -> void:
 	GuidelinesState.add_guideline()
 	
 	guideline_added.emit(axis, color)
+
+
+func _on_clear_guidelines_button_pressed() -> void:
+	remove_all_guidelines.emit()
+
+
+func _on_guideline_state_amount_of_guidelines_changed(amount:int) -> void:
+	clear_guidelines_button.disabled = true if amount == 0 else false
 
 
 func _on_guidelines_state_max_amount_reached(status:bool) -> void:

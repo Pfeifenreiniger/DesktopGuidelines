@@ -86,7 +86,10 @@ func _process(_delta) -> void:
 	if placing and click_stage == 1:
 		line.clear_points()
 		line.add_point(start_point)
-		line.add_point(get_global_mouse_position() - global_position)
+		var current_end_point:Vector2 = get_global_mouse_position() - global_position
+		line.add_point(current_end_point)
+		# zeigt das Pixel-Label schon waehrend des Setzens an
+		_update_label_placing(current_end_point)
 
 
 func _input(event) -> void:
@@ -96,6 +99,7 @@ func _input(event) -> void:
 			# Platzierung abbrechen
 			GuidelinesState.block_guideline_adds = false
 			remove_guideline.emit(self)
+			label.visible = false
 	
 	if event is InputEventMouseButton:
 		
@@ -118,7 +122,7 @@ func _input(event) -> void:
 					screen_background.visible = false
 					click_stage = 0
 					_update_line()
-					_update_label()
+					_update_label_placed()
 					_update_move_button()
 					_update_remove_button()
 					GuidelinesState.block_guideline_adds = false
@@ -137,7 +141,7 @@ func _input(event) -> void:
 			
 			global_position = new_pos
 			_update_line()
-			_update_label()
+			_update_label_placed()
 			_update_move_button()
 			_update_remove_button()
 
@@ -173,11 +177,18 @@ func _update_line() -> void:
 	line.add_point(end_point)
 
 
-func _update_label() -> void:
+func _update_label_placing(current_end_point:Vector2) -> void:
+	var distance:int = int(start_point.distance_to(current_end_point))
+	label.text = "%d px" % distance
+	label.global_position = global_position + current_end_point + Vector2(10, -20)
+	label.visible = GuidelinesState.show_pixel_information
+
+
+func _update_label_placed() -> void:
 	var distance:int = int(start_point.distance_to(end_point))
 	label.text = "%d px" % distance
 	label.global_position = global_position + end_point + Vector2(10, -20)
-	label.visible = true
+	label.visible = GuidelinesState.show_pixel_information
 
 
 func _update_move_button() -> void:

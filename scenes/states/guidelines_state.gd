@@ -3,6 +3,7 @@ extends Node
 #-------CUSTOM SIGNALS-------
 
 signal max_amount_reached(status:bool)
+signal amount_of_guidelines_changed(amount:int)
 signal do_hide_guidelines(status:bool)
 signal do_show_pixel_information(status:bool)
 signal do_block_guideline_adds(status:bool)
@@ -19,6 +20,7 @@ var amount_of_guidelines:int = 0:
 		return amount_of_guidelines
 	set(value):
 		amount_of_guidelines = value
+		amount_of_guidelines_changed.emit(value)
 		if amount_of_guidelines >= MAX_GUIDELINES:
 			max_amount_reached.emit(true)
 		else:
